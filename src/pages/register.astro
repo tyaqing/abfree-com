@@ -1,8 +1,11 @@
 ---
+import { changeLanguage } from "i18next";
 import UserAuthForm from "@/components/forms/user-auth-form.astro";
 import { buttonVariants } from "@/components/ui/button";
 import AuthLayout from "@/layouts/auth-layout.astro";
 import { cn } from "@/lib/utils";
+
+changeLanguage("en");
 ---
 
 <AuthLayout title="Register" description="Register">

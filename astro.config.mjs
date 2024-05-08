@@ -6,30 +6,32 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import simpleStackForm from "simple-stack-form";
-import { defineConfig } from "astro/config";
+import {defineConfig} from "astro/config";
+import astroI18next from "astro-i18next";
+
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-nomy.vercel.app",
-  integrations: [
-    mdx({
-      syntaxHighlight: "shiki",
-      shikiConfig: {
-        theme: "github-dark-dimmed",
-      },
-      gfm: true,
+    site: "https://astro-nomy.vercel.app",
+    integrations: [
+        mdx({
+            syntaxHighlight: "shiki",
+            shikiConfig: {
+                theme: "github-dark-dimmed",
+            },
+            gfm: true,
+        }),
+        icon(),
+        sitemap(),
+        react(),
+        tailwind({
+            applyBaseStyles: false,
+        }),
+        simpleStackForm(),
+        astroI18next(),
+    ],
+    output: "hybrid",
+    adapter: vercel({
+        analytics: true,
     }),
-    icon(),
-    sitemap(),
-    react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    db(),
-    simpleStackForm(),
-  ],
-  output: "hybrid",
-  adapter: vercel({
-    analytics: true,
-  }),
 });

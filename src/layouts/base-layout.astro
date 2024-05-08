@@ -4,6 +4,9 @@ import TailwindIndicator from "@/components/tailwind-indicator.astro";
 // NOTE: work with { Toaster } from "@/components/ui/sonner" but need to update dark theme
 import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
+import i18next, { t } from "i18next";
+import { Trans, HeadHrefLangs } from "astro-i18next/components";
+
 
 type Props = {
   title: string;
@@ -15,7 +18,7 @@ const { title, description, bodyClass } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={i18next.language} class="scroll-smooth">
   <head>
     <BaseHead title={title} description={description} />
   </head>

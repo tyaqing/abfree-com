@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content";
+import i18next from "i18next";
 
 export async function getCategories() {
   const posts = await getCollection("blog");
@@ -12,8 +13,7 @@ export async function getCategories() {
 export async function getPosts() {
   const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
-
+  ).filter(post=>post.slug.startsWith(i18next.language));
   return posts;
 }
 
