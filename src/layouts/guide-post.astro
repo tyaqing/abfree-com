@@ -6,6 +6,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
 import type { CollectionEntry } from "astro:content";
 import DocsLayout from "./docs-layout.astro";
+import MainLayout from "@/layouts/main-layout.astro";
 
 type Props = CollectionEntry<"guides">;
 
@@ -15,7 +16,7 @@ const { title, description, pubDate } = guide.data;
 const toc = await getTableOfContents(guide.body);
 ---
 
-<DocsLayout title={title} description={description}>
+<MainLayout title={title} description={description}>
   <main
     class="container max-w-5xl py-6 lg:grid lg:grid-cols-[1fr_300px] lg:gap-10 lg:py-10 xl:gap-20"
   >
@@ -53,4 +54,4 @@ const toc = await getTableOfContents(guide.body);
       </div>
     </div>
   </main>
-</DocsLayout>
+</MainLayout>

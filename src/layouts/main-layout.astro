@@ -1,81 +1,104 @@
 ---
 import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
-import MainNavigationMenu from "../components/main-navigation-menu.astro";
-import { cn } from "@/lib/utils";
+import {MainNavigationMenu} from "@/components/main-navigation-menu";
+import {cn} from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
-import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
-import { navMenuConfig } from "@/config/nav-menu";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { siteConfig } from "@/config/site";
-import { Icon } from "astro-icon/components";
+import {SheetMobileNav} from "@/components/layout/sheet-mobile-nav";
+import {navMenuConfig} from "@/config/nav-menu";
+import {ThemeToggle} from "@/components/theme-toggle";
+import {siteConfig} from "@/config/site";
+import {Icon} from "astro-icon/components";
 import {Button} from "@/components/ui/button";
-import {NavigationMenu, NavigationMenuItem, NavigationMenuList} from "../components/ui/navigation-menu";
+import {Select, SelectTrigger, SelectContent, SelectItem, SelectValue} from "@/components/ui/select";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink
+} from "@/components/ui/navigation-menu";
 // import { marketingConfig } from "@/config/marketing";
 // import MainNav from "@/components/layout/main-nav.astro";
-import i18next, {t,changeLanguage} from 'i18next'
-import { LanguageSelector } from "astro-i18next/components";
+import i18next, {t, changeLanguage} from 'i18next'
+import {LanguageSelector} from "astro-i18next/components";
 
 import {localizePath} from "astro-i18next";
+import {navigationMenuTriggerStyle} from "../components/ui/navigation-menu";
+import {AstroSelect} from "@/components/astro-select";
 type Props = {
   title: string;
   description?: string;
   mainClass?: string;
 };
 
-const { title, description, mainClass } = Astro.props;
+const {title, description, mainClass} = Astro.props;
+const {pathname} = Astro.url;
 ---
 
 <BaseLayout title={title} description={description}>
-  <Header className="border-b">
-    <!-- if using only normals links  -->
-    <!-- <MainNav items={marketingConfig.mainNav} slot="left-header" />
-    <SheetMobileNav
-      mainNavItems={marketingConfig.mainNav}
-      slot="mobile-nav-header"
-      client:load
-    /> -->
+    <Header className="border-b">
+        <!-- if using only normals links  -->
+        <!-- <MainNav items={marketingConfig.mainNav} slot="left-header" />
+        <SheetMobileNav
+          mainNavItems={marketingConfig.mainNav}
+          slot="mobile-nav-header"
+          client:load
+        /> -->
 
-    <!-- if use Navigation Menu on desktop -->
-      <div slot="left-header" >
-         <a href={localizePath('/blog',i18next.language)}>
-             <Button variant="ghost">
-               {t("MainNav.博客")}
-             </Button>
-         </a>
-          <a href={localizePath('/releases',i18next.language)}>
-              <Button variant="ghost">
-                {t("MainNav.更新记录")}
-              </Button>
-          </a>
-      </div>
+        <!--if use Navigation Menu on desktop -->
+        <div slot="left-header">
 
-    <SheetMobileNav
-      mainNavItems={[...navMenuConfig.links]}
-      sidebarNavItems={[
-        ...navMenuConfig.pagesNav,
-        ...navMenuConfig.examplesNav,
-      ]}
-      slot="mobile-nav-header"
-      client:load
-    />
 
-    <div class="flex items-center gap-x-4" slot="right-header">
-      <a
-        href={siteConfig.links.github}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="github"
-      >
-        <Icon name="github" class="size-[22px]" />
-      </a>
-      <ThemeToggle client:load />
-    </div>
-  </Header>
+            <a href={localizePath('/blog', i18next.language)}>
+                <Button variant="ghost">
+                  {t("MainNav.博客")}
+                </Button>
+            </a>
+            <a href={localizePath('/releases', i18next.language)}>
+                <Button variant="ghost">
+                  {t("MainNav.更新记录")}
+                </Button>
+            </a>
 
-  <main class={cn(mainClass)}>
-    <slot />
-  </main>
+        </div>
+        <!--<MainNavigationMenu client:load slot="left-header"></MainNavigationMenu>-->
 
-  <Footer />
+
+        <!--<SheetMobileNav-->
+        <!--        mainNavItems={[...navMenuConfig.links]}-->
+        <!--        sidebarNavItems={[-->
+        <!--          ...navMenuConfig.pagesNav,-->
+        <!--          ...navMenuConfig.examplesNav,-->
+        <!--        ]}-->
+        <!--        slot="mobile-nav-heade  r"-->
+        <!--        client:load-->
+        <!--/>-->
+
+        <div class="flex items-center gap-x-8 text-sm" slot="right-header">
+            <div class="gap-4 flex">
+                <a
+                        class={cn('text-gray-500 hover:text-gray-900 transition-all', i18next.language === 'en' && 'font-bold underline')}
+                        href={localizePath(pathname, 'en')}
+                >
+                    English
+                </a>
+                <a
+                        href={localizePath(pathname, 'zh')}
+                        class={cn('text-gray-500 hover:text-gray-900 transition-all', i18next.language === 'zh' && 'font-bold underline')}
+
+                >
+                    中文
+                </a>
+            </div>
+            <ThemeToggle client:load/>
+        </div>
+    </Header>
+
+    <main class={cn(mainClass)}>
+        <slot/>
+    </main>
+
+    <Footer/>
 </BaseLayout>

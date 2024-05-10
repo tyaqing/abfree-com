@@ -7,11 +7,10 @@ import {t} from 'i18next'
 ---
 
 <section>
-  <div class="pb-6 pt-28">
+  <div class="pb-6 pt-14">
     <div class="container max-w-6xl">
       <HeaderSection
-        label="Features"
-        title="Discover all features."
+        title={t("MainNav.特性")}
         subtitle={t("Index.featureBefore")}
       />
 
@@ -28,9 +27,9 @@ import {t} from 'i18next'
                     <Icon name={feature.icon} class="size-4" />
                 </div>
               </div>
-              <h3 class="mt-6 text-md font-semibold">{feature.title}</h3>
+              <h3 class="mt-6 text-md font-semibold">{t(feature.title)}</h3>
                 <p class="mt-6 pb-6 text-muted-foreground">
-                  {feature.description}
+                  {t(feature.description)}
                 </p>
             </div>
           ))

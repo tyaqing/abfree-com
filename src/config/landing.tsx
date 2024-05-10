@@ -55,20 +55,20 @@ export const infos: InfoLdg[] = [
 
 export const features = [
   {
-    title: t("Index.feature1"),
-    description: t("Index.feature1Desc"),
+    title: "Index.feature1",
+    description: "Index.feature1Desc",
     link: "/",
     icon: "wasm",
   },
   {
-    title: t("Index.feature2"),
-    description: t("Index.feature2Desc"),
+    title: "Index.feature2",
+    description: "Index.feature2Desc",
     link: "/",
     icon: "lucide:images",
   },
   {
-    title: t("Index.feature3"),
-    description: t("Index.feature3Desc"),
+    title: "Index.feature3",
+    description: "Index.feature3Desc",
     link: "/",
     icon: "lucide:shield-check",
   },

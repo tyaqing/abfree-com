@@ -2,15 +2,15 @@
 import { changeLanguage } from "i18next";
 import GuideCard from "@/components/cards/guide-card.astro";
 import DocsPageHeader from "@/components/page-header.astro";
-import DocsLayout from "@/layouts/docs-layout.astro";
+import MainLayout from "@/layouts/main-layout.astro";
 import { getGuides } from "@/lib/fetchers";
+
 
 changeLanguage("zh");
 
 const guides = await getGuides();
 ---
-
-<DocsLayout title="Blog" description="Lorem ipsum dolor sit amet">
+<MainLayout title="Blog" description="Lorem ipsum dolor sit amet">
   <section class="container max-w-6xl py-10">
     <DocsPageHeader
       heading="Guides"
@@ -29,4 +29,4 @@ const guides = await getGuides();
       )
     }
   </section>
-</DocsLayout>
+</MainLayout>
