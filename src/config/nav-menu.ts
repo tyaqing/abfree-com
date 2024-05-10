@@ -46,6 +46,50 @@ export const navMenuConfig: NavMenuConfig = {
         },
       ],
     },
+    {
+      title: "Pages",
+      items: [
+        {
+          title: "Landing",
+          href: "/landing",
+          description: "A landing page template with differents sections.",
+          image: "/images/examples/landing.jpg",
+        },
+        {
+          title: "Changelog",
+          href: "/releases",
+          description: "A reproduction of Starlog template with Tailwind CSS.",
+          image: "/images/examples/changelog.jpg",
+        },
+        {
+          title: "Waitlist",
+          href: "/waitlist",
+          description:
+            "A waitlist form using Astro DB, React Hook Form & Sonner. Static page.",
+          image: "/images/examples/waitlist.jpg",
+          forceReload: true,
+        },
+        {
+          title: "Pricing",
+          href: "/pricing",
+          description: "Pricing cards, FAQs and more content with price.",
+          image: "/images/examples/pricing.jpg",
+        },
+        {
+          title: "About",
+          href: "/about",
+          description: "A simple page with a masonry gallery and little text.",
+          image: "/images/examples/about.jpg",
+        },
+        {
+          title: "Newsletter",
+          href: "/newsletter",
+          description:
+            "A newsletter form using Astro DB & Simple Stack Form. Counter display!",
+          image: "/images/examples/newsletter.jpg",
+        },
+      ],
+    },
   ],
   examplesNav: [
     {
@@ -99,8 +143,14 @@ export const navMenuConfig: NavMenuConfig = {
   ],
   links: [
     {
-      title: "Example",
-      href: "/example",
+      title: "MainNav.博客",
+      href: "/blog",
+      description: "Example description",
+      image: "/images/examples/image.jpg",
+    },
+    {
+      title: "MainNav.Changelog",
+      href: "/releases",
       description: "Example description",
       image: "/images/examples/image.jpg",
     },

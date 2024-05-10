@@ -28,7 +28,13 @@ export default defineConfig({
             applyBaseStyles: false,
         }),
         simpleStackForm(),
-        astroI18next(),
+        astroI18next({
+            defaultLocale: "en",
+            locales: ["en", "zh"],
+            i18nextServer: {
+                debug: true,
+            },
+        }),
     ],
     output: "hybrid",
     adapter: vercel({

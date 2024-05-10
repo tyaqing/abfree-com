@@ -1,7 +1,7 @@
 ---
 import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
-import { MainNavigationMenu } from "@/components/main-navigation-menu";
+import MainNavigationMenu from "../components/main-navigation-menu.astro";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
 import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
@@ -9,9 +9,14 @@ import { navMenuConfig } from "@/config/nav-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/config/site";
 import { Icon } from "astro-icon/components";
+import {Button} from "@/components/ui/button";
+import {NavigationMenu, NavigationMenuItem, NavigationMenuList} from "../components/ui/navigation-menu";
 // import { marketingConfig } from "@/config/marketing";
 // import MainNav from "@/components/layout/main-nav.astro";
+import i18next, {t,changeLanguage} from 'i18next'
+import { LanguageSelector } from "astro-i18next/components";
 
+import {localizePath} from "astro-i18next";
 type Props = {
   title: string;
   description?: string;
@@ -32,7 +37,19 @@ const { title, description, mainClass } = Astro.props;
     /> -->
 
     <!-- if use Navigation Menu on desktop -->
-    <MainNavigationMenu slot="left-header" client:load />
+      <div slot="left-header" >
+         <a href={localizePath('/blog',i18next.language)}>
+             <Button variant="ghost">
+               {t("MainNav.博客")}
+             </Button>
+         </a>
+          <a href={localizePath('/releases',i18next.language)}>
+              <Button variant="ghost">
+                {t("MainNav.更新记录")}
+              </Button>
+          </a>
+      </div>
+
     <SheetMobileNav
       mainNavItems={[...navMenuConfig.links]}
       sidebarNavItems={[

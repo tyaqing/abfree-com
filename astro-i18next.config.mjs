@@ -5,4 +5,22 @@ export default {
     i18nextServer: {
         debug: true,
     },
+    routes: {
+        en: {
+            about: "a-propos",
+            "contact-us": "contactez-nous",
+            products: {
+                index: "produits",
+                categories: "categories",
+            },
+        },
+        zh: {
+            about: "a-proposito",
+            "contact-us": "contactenos",
+            products: {
+                index: "productos",
+                categories: "categorias",
+            },
+        },
+    },
 };

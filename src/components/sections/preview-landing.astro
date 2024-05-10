@@ -10,13 +10,14 @@ import { Image } from "astro:assets";
       <div
         class="relative aspect-video overflow-hidden rounded-xl md:rounded-lg border"
       >
-        <Image
+        <video
           class="size-full object-cover object-center"
-          src="/images/examples/static-blog.jpg"
-          alt="preview landing"
+          src="/images/preview.MOV"
+          autoplay
+          controls
+          loop
           width={2000}
           height={1000}
-          loading="eager"
         />
       </div>
     </div>

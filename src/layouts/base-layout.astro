@@ -21,6 +21,7 @@ const { title, description, bodyClass } = Astro.props;
 <html lang={i18next.language} class="scroll-smooth">
   <head>
     <BaseHead title={title} description={description} />
+
   </head>
   <body class={cn("flex flex-col min-h-screen", bodyClass)}>
     <slot />

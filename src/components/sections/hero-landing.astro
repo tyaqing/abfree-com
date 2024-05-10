@@ -3,36 +3,40 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@/config/site";
+import i18next,{t} from "i18next";
+import packages from '../../../package.json'
+import {localizePath} from "astro-i18next";
 ---
 
 <section class="space-y-6 py-12 sm:py-20 lg:py-20">
   <div class="container flex max-w-5xl flex-col items-center gap-5 text-center">
     <a
-      href="https://twitter.com/miickasmt"
+      href={localizePath("/releases",i18next.language)}
       class={cn(
         buttonVariants({ variant: "outline", size: "sm", rounded: "full" }),
         "px-4"
       )}
       target="_blank"
     >
-      <span class="mr-3">🎉</span> Introducing on{" "}
-      <Icon name="twitter" class="ml-2 size-3.5" />
+      <span class="mr-3">🎉</span> {t("Index.最新版本")} {packages.version}
+      &nbsp;
+      <span class="text-gradient_indigo-purple">{t("Index.压缩速度提升 X500%")}</span>
+
     </a>
 
     <h1
       class="text-balance font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[66px]"
     >
-      Kick off with a bang with{" "}
+      {t("Index.h1")}{" "}
       <span class="text-gradient_indigo-purple font-extrabold">
-        SaaS Starter
+        {t("Index.h1_append")}
       </span>
     </h1>
 
     <p
       class="max-w-2xl text-balance leading-normal text-muted-foreground sm:text-xl sm:leading-8"
     >
-      Build your next project using Next.js 14, Prisma, Planetscale, Auth.js v5,
-      Resend, React Email, Shadcn/ui, Stripe.
+      {t("Index.h2")}
     </p>
 
     <div class="flex justify-center space-x-2 md:space-x-4">
@@ -40,7 +44,9 @@ import { siteConfig } from "@/config/site";
         href="/pricing"
         class={cn(buttonVariants({ size: "lg", rounded: "full" }), "gap-2")}
       >
-        <span>Go Pricing</span>
+        <span>
+            {t("Index.Figma 插件")}
+        </span>
         <Icon name="lucide:arrow-right" class="size-4" />
       </a>
       <a
@@ -58,7 +64,9 @@ import { siteConfig } from "@/config/site";
       >
         <Icon name="github" class="mr-2 size-4" />
         <p>
-          <span class="hidden sm:inline-block">Star on</span> GitHub{" "}
+          <span class="hidden sm:inline-block">
+              {t("Index.使用文档")}
+          </span>
           <!-- <span class="font-semibold">{nFormatter(stars)}</span> -->
         </p>
       </a>
