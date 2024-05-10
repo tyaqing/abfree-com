@@ -5,11 +5,11 @@ import DocsPageHeader from "@/components/page-header.astro";
 import MainLayout from "@/layouts/main-layout.astro";
 import { getGuides } from "@/lib/fetchers";
 
-
 changeLanguage("zh");
 
 const guides = await getGuides();
 ---
+
 <MainLayout title="Blog" description="Lorem ipsum dolor sit amet">
   <section class="container max-w-6xl py-10">
     <DocsPageHeader

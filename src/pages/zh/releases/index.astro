@@ -21,8 +21,7 @@ const posts = (await getCollection("releases"))
 <MainLayout title={t("MainNav.更新记录")}>
   <section class="container max-w-screen-lg space-y-6 pt-12">
     <PageHeader
-      heading="Changelog"
-      text="Reproduce Astro Starlog template with Tailwind CSS & shadcn/ui."
+      heading={t("MainNav.更新记录")}
     />
 
     <ul class="pt-6">
