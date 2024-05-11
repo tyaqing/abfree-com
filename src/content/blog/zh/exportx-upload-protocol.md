@@ -3,7 +3,7 @@ title: "用户图片上传协议"
 description: "我们的免费服务建立在Cloudflare提供的免费CDN服务上。这意味着您上传的图片将被存储在Cloudflare的服务器上，并通过其CDN服务进行分发。"
 pubDate: "May 08 2024"
 cover: "/images/blog/placeholder-3.jpg"
-category: "design"
+category: "page"
 ---
 
 1. 我们的免费服务建立在Cloudflare提供的免费CDN服务上。这意味着您上传的图片将被存储在Cloudflare的服务器上，并通过其CDN服务进行分发。请注意，虽然我们尽力确保服务的连续性，但Cloudflare的服务可能会受到各种因素的影响，包括但不限于网络问题、硬件故障或Cloudflare自身的服务策略变更。

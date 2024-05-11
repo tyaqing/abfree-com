@@ -61,6 +61,11 @@ const {pathname} = Astro.url;
                   {t("MainNav.更新记录")}
                 </Button>
             </a>
+            <a href={localizePath('/guides', i18next.language)}>
+                <Button variant="ghost">
+                    {t("MainNav.使用文档")}
+                </Button>
+            </a>
 
         </div>
         <!--<MainNavigationMenu client:load slot="left-header"></MainNavigationMenu>-->

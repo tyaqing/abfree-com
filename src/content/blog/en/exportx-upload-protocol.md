@@ -1,9 +1,9 @@
 ---
 title: "ExportX Free Image Upload Agreement"
 description: "Our free service is built on the free CDN service provided by Cloudflare. This means that the images you upload will be stored on Cloudflare's servers and distributed through its CDN service. "
-pubDate: "Jul 08 2022"
+pubDate: "May 01 2024"
 cover: "/images/blog/placeholder-3.jpg"
-category: "design"
+category: "page"
 ---
 
 1. Our free service is built on the free CDN service provided by Cloudflare. This means that the images you upload will be stored on Cloudflare's servers and distributed through its CDN service. Please note that while we strive to ensure the continuity of the service, Cloudflare's service may be affected by various factors, including but not limited to network issues, hardware failures, or changes in Cloudflare's own service policies.

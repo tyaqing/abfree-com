@@ -1,6 +1,8 @@
 ---
 import { formatDate } from "@/lib/utils";
 import type { CollectionEntry } from "astro:content";
+import {localizePath} from "astro-i18next";
+import i18next from "i18next";
 
 type Props = CollectionEntry<"guides">;
 
@@ -26,7 +28,7 @@ const guide = Astro.props.data;
       {
         guide.description && (  
           <p
-            class="text-muted-foreground"
+            class="text-muted-foreground line-clamp-2"
             transition:name={"desc-" + slug}
           >
             {guide.description}
@@ -45,7 +47,7 @@ const guide = Astro.props.data;
       )
     }
   </div>
-  <a href={`/guides/${slug}/`} class="absolute inset-0">
+  <a href={localizePath(`/guides/${slug}/`,i18next.language)} class="absolute inset-0">
     <span class="sr-only">View</span>
   </a>
 </article>

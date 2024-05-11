@@ -6,6 +6,8 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "./main-layout.astro";
+import {localizePath} from "astro-i18next";
+import i18next from "i18next";
 
 type Props = CollectionEntry<"blog">;
 
@@ -30,7 +32,7 @@ const { title, description, pubDate, updatedDate, cover, category } =
 
     <article class="prose dark:prose-invert max-w-none">
       <a
-        href={`/blog/category/${category}`}
+        href={localizePath(`/blog/category/${category}`,i18next.language)}
         transition:name={`badge-cat-${slug}`}
       >
         <Badge radius="md" className="capitalize">

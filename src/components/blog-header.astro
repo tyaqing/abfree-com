@@ -3,6 +3,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { getCategories } from "@/lib/fetchers";
 import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
+import {localizePath} from "astro-i18next";
+import i18next from "i18next";
 
 const categories = await getCategories();
 
@@ -17,19 +19,19 @@ const { category } = Astro.params;
 <h1 class="inline-block font-heading text-4xl">{title}</h1>
 
 <div class="flex items-start justify-between my-6 max-md:gap-4">
-  <div
-    class="flex items-center lg:w-full max-w-xs h-10 rounded-md px-2 lg:px-3 border text-muted-foreground"
-  >
-    <Icon name="ri:search-line" class="size-5" />
-    <span class="text-sm ml-2 hidden lg:flex">Search (coming soon)</span>
-  </div>
+  <!--<div-->
+  <!--  class="flex items-center lg:w-full max-w-xs h-10 rounded-md px-2 lg:px-3 border text-muted-foreground"-->
+  <!--&gt;-->
+  <!--  <Icon name="ri:search-line" class="size-5" />-->
+  <!--  <span class="text-sm ml-2 hidden lg:flex">Search (coming soon)</span>-->
+  <!--</div>-->
 
   {
     categories?.length ? (
       <ul class="flex snap-x snap-mandatory overflow-auto items-center space-x-2 lg:space-x-2.5 pb-2">
         <li class="flex-shrink-0 snap-start">
           <a
-            href={`/blog`}
+            href={localizePath(`/blog`,i18next.language)}
             class={cn(
               !category ? "select-none" : "",
               buttonVariants({
@@ -43,7 +45,7 @@ const { category } = Astro.params;
         {categories.map((item) => (
           <li class="flex-shrink-0 snap-start">
             <a
-              href={`/blog/category/${item}`}
+              href={localizePath(`/blog/category/${item}`,i18next.language)}
               class={cn(
                 "capitalize",
                 item === category ? "select-none" : "",

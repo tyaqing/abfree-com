@@ -2,7 +2,7 @@
   "title": "Figma Image Compressor",
   "Index": {
     "h1": "All-in-one Figma Plugin for Image ",
-    " ": "Compression & Upload",
+    "h1_append": "Compression & Upload",
     "h2": "A local compression export tool based on WebAssembly supporting PNG, JPG, WEBP, SVG, AVIF",
     "h3": "Local compression | Quick and efficient | Privacy protection",
     "Figma 插件": "Figma Plugin",
@@ -30,6 +30,7 @@
   "Blog": {
     "博客": "Blog",
     "查看所有文章": "View all articles",
-    "发布于": "Published on"
+    "发布于": "Published on",
+    "所有文章": "All posts"
   }
 }

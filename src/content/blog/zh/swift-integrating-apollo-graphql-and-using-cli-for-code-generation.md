@@ -1,9 +1,9 @@
 ---
 title: "Swift接入Apollo GraphQL并使用CLI生成代码"
 description: "✏️ 笔者是GraphQL深度爱好者，在学习Swift开发过程中也希望能够将其引入，过程中也遇到一些包管理问题，参阅了官网文档后成功接入，下面是整个过程。"
-pubDate: "Jul 08 2022"
-cover: "/images/blog/placeholder-3.jpg"
-category: "design"
+pubDate: "May 01 2024"
+cover: "https://x.abfree.com/assets/59e125ef-1020-4ae0-ba9d-fa78e40607ef"
+category: "xcode"
 ---
 
 > ✏️ 笔者是GraphQL深度爱好者，在学习Swift开发过程中也希望能够将其引入，过程中也遇到一些包管理问题，参阅了官网文档后成功接入，下面是整个过程。
