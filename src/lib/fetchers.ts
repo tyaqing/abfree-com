@@ -21,7 +21,8 @@ export async function getPosts() {
       return {
         ...post,
         // 去掉语言前缀
-        slug: post.slug.replace(i18next.language+'/', ''),
+        slug:post.slug
+        // slug: post.slug.replace(i18next.language+'/', ''),
       }
     })
   return posts;

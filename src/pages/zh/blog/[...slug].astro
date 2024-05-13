@@ -12,14 +12,11 @@ export async function getStaticPaths() {
         .map((post) => {
         const [oLang, ...slug] = post.slug.split("/");
         const lang = i18next.language === "en" ? "" : i18next.language;
-        console.log("slug:", post.slug);
-        console.log("lang:", lang);
-        console.log("match:", [...slug].join("/"));
         console.log("----------------------------------");
         return {
             params: {
                 // 去掉语言前缀
-                slug: [lang, ...slug].join("/"),
+                slug: post.slug
             },
             props: post
         };

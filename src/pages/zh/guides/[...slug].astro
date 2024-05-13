@@ -8,10 +8,13 @@ changeLanguage("zh");
 
 export async function getStaticPaths() {
     const guides = await getCollection("guides");
-    return guides.map((guide) => ({
-        params: { slug: guide.slug },
-        props: guide,
-    }));
+    return guides.map((guide) => {
+        const [oLang, ...slug] = guide.slug.split("/");
+        return {
+            params: { slug: slug.join("/") },
+            props: guide,
+        };
+    });
 }
 type Props = CollectionEntry<"guides">;
 const guide = Astro.props;
