@@ -1,11 +1,10 @@
 ---
-title: ExportX 压缩使用说明
-description: Figma Dev模式收费后，我们支持了编辑模式，同样可以压缩导出图片！
-pubDate: 2024-05-01
+title: ExportX Figma插件使用说明
+description: Figma Dev模式收费后，我们支持了设计模式，同样可以压缩导出图片！
+pubDate: 2024-05-12
 ---
-> Figma Dev模式收费后，我们支持了编辑模式，同样可以压缩导出图片！
 
-## 开始使用
+# 开始使用
 
 点击图层，选定格式和倍率，一键压缩导出，超快！
 
@@ -37,7 +36,7 @@ ExportX为您提供了能够快速上传的免费图床，服务建立在Cloudfl
 
 当然，我们更推荐您使用自定义上传服务。
 
-## 自定义上传服务
+# 自定义上传服务
 
 如果您有自己的对象存储服务，您可以通过替换成自己的上传接口。
 首先，点击左上角的[设置],在上传设置中，选择"自定义"方式。
@@ -47,7 +46,7 @@ ExportX为您提供了能够快速上传的免费图床，服务建立在Cloudfl
 
 ![](https://x.abfree.com/assets/3691eb76-6dd5-4f59-a05b-81d3117b849b)
 
-### 上传接口规范
+## 上传接口规范
 
 开启自定义上传后，图片会通过`POST`请求上传到您的接口。接口需要遵守以下规范：
 
@@ -74,7 +73,7 @@ file:File    // 上传的文件
 
 下面是一些示例：
 
-### Cloudflare R2+Worker
+## Cloudflare R2+Worker
 
 示例代码,此处使用[hono](https://hono.dev/)来演示
 
@@ -123,7 +122,7 @@ app.post('/upload', async (c) => {
 })
 ```
 
-### Amazon S3  或兼容S3
+## Amazon S3  或兼容S3
 
 大多数对象存储都兼容S3协议，比如
 - AWS S3
@@ -211,13 +210,13 @@ function getClient(c: Context) {
 
 ```
 
-## QA
+# QA
 
-**上传是如何发起的？**
+## 上传是如何发起的
 
 为了保护您图片的隐私性，上传行为是由前端发起，因此您可能需要处理跨域问题。
 
-如何确保不被攻击
+## 如何确保不被攻击
 
 https://www.figma.com/plugin-docs/api/User/
 

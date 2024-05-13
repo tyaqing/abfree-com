@@ -1,6 +1,6 @@
 ---
 title: ExportX Compression Instructions
-description: Figma Dev模式收费后，用户现在可以享受编辑模式的便利，并且可以快速压缩导出图片。通过点击图层，选择格式和倍率，一键导出，操作简便快捷。支持的导出格式包括PNG, JPG, WEBP, SVG, AVIF，最多可同时压缩5种格式和倍率。历史记录将永久保存在用户电脑上，最多保留15条记录。未来计划包括支持参数调整和一键上传到CDN
+description: After Figma Dev mode became chargeable, we added an editing mode that can also compress and export images!
 pubDate: 2024-05-01
 ---
 After Figma Dev mode became chargeable, we added an editing mode that can also compress and export images!

@@ -1,16 +1,16 @@
 ---
 import { changeLanguage, t } from "i18next";
-import BlogHeader from "@/components/blog-header.astro";
-import BlogCard from "@/components/cards/blog-card.astro";
-import MainLayout from "@/layouts/main-layout.astro";
-import { getPosts } from "@/lib/fetchers";
+import BlogHeader from "../../components/blog-header.astro";
+import BlogCard from "../../components/cards/blog-card.astro";
+import MainLayout from "../../layouts/main-layout.astro";
+import { getPosts } from "../../lib/fetchers";
 
 changeLanguage("en");
 
 const posts = await getPosts();
 ---
 
-<MainLayout title="Static Blog">
+<MainLayout title={t("MainNav.博客")}>
   <section class="container py-10">
     <BlogHeader title={t("MainNav.博客")} />
     <div

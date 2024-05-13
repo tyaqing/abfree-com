@@ -13,6 +13,10 @@ import astroI18next from "astro-i18next";
 // https://astro.build/config
 export default defineConfig({
     site: "https://astro-nomy.vercel.app",
+    i18n:{
+        defaultLocale: "en",
+        locales: ["en", "zh"],
+    },
     integrations: [
         mdx({
             syntaxHighlight: "shiki",
