@@ -37,8 +37,19 @@ const {title, description, mainClass} = Astro.props;
 const {pathname} = Astro.url;
 
 const i18nPath = (lang: string) => {
-    console.log('pathname',pathname)
 
+    const backList = ['/blog','/guides']
+    const currentLang = i18next.language === 'en' ? '' : i18next.language
+    // 列表内的路由需要回到上一级目录
+    for (let i = 0; i < backList.length; i++) {
+        let path = backList[i]
+        if(currentLang){
+            path  ='/'+ currentLang+  backList[i]
+        }
+        if (pathname.startsWith(path)) {
+            return localizePath(backList[i], lang)
+        }
+    }
     return  localizePath(pathname, lang)
 }
 ---

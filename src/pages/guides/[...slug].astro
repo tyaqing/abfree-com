@@ -11,7 +11,7 @@ export async function getStaticPaths() {
     return guides.map((guide) => {
         const [oLang, ...slug] = guide.slug.split("/");
         return {
-            params: { slug: slug.join("/") },
+            params: { slug: guide.slug },
             props: guide,
         };
     });

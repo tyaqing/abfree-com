@@ -44,7 +44,7 @@ export async function getGuides() {
       return {
         ...guide,
         // 去掉语言前缀
-        slug: guide.slug.replace(i18next.language+'/', ''),
+        slug: guide.slug
       }
     })
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
