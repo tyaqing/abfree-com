@@ -10,7 +10,6 @@ type Props = {
 };
 
 const { className } = Astro.props;
-const env = import.meta.env;
 ---
 
 <footer class={cn("border-t mt-8", className)}>
@@ -47,12 +46,6 @@ const env = import.meta.env;
       </span> -->
       <p class="text-left text-sm text-muted-foreground">
           © {(new Date()).getFullYear()} ABFree. All rights reserved.
-        {env.NODE_ENV === "development" && (
-          <span class="text-xs text-muted-foreground bg-purple-500 p-1 text-white rounded-sm">
-          {env.NODE_ENV}
-          </span>
-        )}
-
       </p>
 
       <div class="flex items-center gap-3">

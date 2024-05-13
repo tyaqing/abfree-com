@@ -1,24 +1,43 @@
 ---
 title: ExportX Figma插件使用说明
-description: Figma Dev模式收费后，我们支持了设计模式，同样可以压缩导出图片！
+description: ""
 pubDate: 2024-05-12
 ---
 
-# 开始使用
+# 快速开始
 
-点击图层，选定格式和倍率，一键压缩导出，超快！
+我们的插件支持 「设计模式」和「Dev模式」， 查看视频，快速了解插件使用方式~
 
-![](https://x.abfree.com/assets/ac438e6e-4a4f-46af-84bb-65d0f1ca5359)
+<video
+    class="object-cover object-center"
+    src="/images/preview.MOV"
+    autoplay
+    controls
+    loop
+/>
 
-## 导出格式支持
+## 导出格式支持与压缩率
 
-我们支持同时压缩多种格式和倍率的图片，但是规则限制在**5条**以内，图片格式支持PNG, JPG, WEBP, SVG, AVIF。
+我们支持同时压缩多种格式和倍率的图片，但是规则限制在**5条**以内，图片格式支持：
+
+| 格式   | 支持     | 节省空间 |
+|------|--------|------|
+| AVIF | 是      | ≈92% |
+| WEBP | 是      | ≈88% |
+| JPG  | 是      | ≈85% |
+| PNG  | 是      | ≈68% |
+| SVG  | 是      | ≈8%  |
+| ico  | 🚧 开发中 | -    |
+
+<Callout icon="💡" type="info">
+压缩效果根据统计得出，实际效果可能有所不同，此表格将持续更新。
+</Callout>
 
 ## 历史记录
 
-插件压缩的图片我们会在您的电脑上永久的存储起来，直到您清空缓存或者清除历史纪录。受限于客户端存储限制，我们仅保存**15条**历史纪录。
+插件压缩的图片我们会在您的电脑上永久的存储起来，直到您清空缓存或者清除历史纪录。
 
-> ExportX 2.1.0 带来了新的图片上传功能，用户可以上传图片到自定义的对象存储，或者使用我们提供的免费图床服务。
+受限于客户端存储限制，我们仅保存**15条**历史纪录。
 
 ## 免费图床服务
 
@@ -41,10 +60,24 @@ ExportX为您提供了能够快速上传的免费图床，服务建立在Cloudfl
 如果您有自己的对象存储服务，您可以通过替换成自己的上传接口。
 首先，点击左上角的[设置],在上传设置中，选择"自定义"方式。
 
+<div className="flex">
+    <Image
+        src="https://x.abfree.com/assets/3c196681-afa3-42b1-8716-320428204875"
+        class="flex-1"
+        width="446"
+        height="507"
+        alt="Image"
+    />
 
-![](https://x.abfree.com/assets/3c196681-afa3-42b1-8716-320428204875)
+    <Image
+        src="https://x.abfree.com/assets/3691eb76-6dd5-4f59-a05b-81d3117b849b"
+        class="flex-1"
+        width="298"
+        height="607"
+        alt="Image"
+    />
+</div>
 
-![](https://x.abfree.com/assets/3691eb76-6dd5-4f59-a05b-81d3117b849b)
 
 ## 上传接口规范
 
@@ -58,20 +91,25 @@ Content-Type: multipart/form-data;
 ```
 
 **Body：**
-您可以通过form-data的方式上传文件，key为"file"。同时，您可以通过自定义Body来传递额外的信息。
-```
-file:File    // 上传的文件
-```
+插件通过form-data的方式上传文件，下面的参数是插件提供的，同时，您可以通过自定义Body来传递额外的信息。
+
+| 参数名       | 类型     | 说明                                     |
+|-----------|--------|----------------------------------------|
+| file      | File   | 二进制文件                                  |
+| fileName  | String | 文件名,如image92.avif                      |
+| format    | String | 图片格式,如png                              |
+| figmaName | String | Figma用户名                               |
+| figmaId   | String | Figma用户ID ,19位的数字，参考[Figma User](https://www.figma.com/plugin-docs/api/User/)  |
+
 #### Response内容
-返回的内容应该是一个json对象，包含图片的url，url用于复制到剪贴板。
-```
+
+您需要给插件返回一个json对象，包含图片的url，url用于复制到剪贴板，如果没有返回url，复制按钮将不可用。
+
+```json
 {
   "url": "https://dev.cdn.abfree.com/images/6FjJoXmt34ox0Fu1.png"
 }
 ```
-
-
-下面是一些示例：
 
 ## Cloudflare R2+Worker
 
@@ -216,7 +254,10 @@ function getClient(c: Context) {
 
 为了保护您图片的隐私性，上传行为是由前端发起，因此您可能需要处理跨域问题。
 
-## 如何确保不被攻击
+## 如何保证服务不被滥用
 
-https://www.figma.com/plugin-docs/api/User/
+`figmaId`是用户的唯一标识，它包含在上传的body当中，您可以通过白名单+password方式来限制用户上传的频率。
+
+
+
 

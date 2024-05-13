@@ -10,6 +10,7 @@ type Props = {
 };
 
 const { className } = Astro.props;
+const env = import.meta.env;
 ---
 
 <header
@@ -28,7 +29,6 @@ const { className } = Astro.props;
       </a>
 
       <slot name="mobile-nav-header" />
-
       <div class="hidden md:flex">
         <slot name="left-header" />
       </div>
@@ -38,11 +38,12 @@ const { className } = Astro.props;
     <div
       class="absolute top-1/2 left-1/2 -translate-x-4 -translate-y-4 md:hidden"
     >
-      <a href="/" aria-label="Astronomy homepage">
+      <a href="/" aria-label="homepage">
         <Icon name="stars-outline" class="size-8" />
       </a>
     </div>
 
     <slot name="right-header" />
+
   </div>
 </header>

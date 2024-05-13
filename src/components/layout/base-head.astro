@@ -38,7 +38,7 @@ const {
 
 <!-- Primary Meta Tags -->
 <title>{title?`${title} | ${siteConfig.name}`:siteConfig.name}</title>
-    <meta name="title" content={title ? `${title} | Astronomy` : "Astronomy"}/>
+    <meta name="title" content={title?`${title} | ${siteConfig.name}`:siteConfig.name}/>
     <meta name="description" content={description}/>
 
   <!-- Open Graph / Facebook -->

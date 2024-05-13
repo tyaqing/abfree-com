@@ -3,8 +3,8 @@ import type { SidebarNavItem, SiteConfig } from "@/types";
 export const siteConfig: SiteConfig = {
   name: "ExportX",
   description:
-    "An modern example app built using Astro v4 & shadcn/ui. Inspired by shadcn/taxonomy.",
-  url: "https://astro-nomy.vercel.app",
+    "All-in-one Figma Plugin for Image Compression & Upload.",
+  url: "https://www.abfree.com",
   ogImage: "https://astro-nomy.vercel.app/og.jpg",
   links: {
     twitter: "https://twitter.com/miickasmt",
