@@ -12,7 +12,7 @@ import astroI18next from "astro-i18next";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://astro-nomy.vercel.app",
+    site: "https://www.abfree.com",
     integrations: [
         mdx({
             syntaxHighlight: "shiki",

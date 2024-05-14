@@ -5,10 +5,9 @@ export const siteConfig: SiteConfig = {
   description:
     "All-in-one Figma Plugin for Image Compression & Upload.",
   url: "https://www.abfree.com",
-  ogImage: "https://astro-nomy.vercel.app/og.jpg",
   links: {
     twitter: "https://twitter.com/miickasmt",
-    github: "https://github.com/mickasmt/astro-nomy",
+    github: "https://github.com/tyaqing",
   },
 };
 
