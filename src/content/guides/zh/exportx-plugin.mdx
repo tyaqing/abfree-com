@@ -6,7 +6,7 @@ pubDate: 2024-05-12
 
 # 快速开始
 
-我们的插件支持 「设计模式」和「Dev模式」， 查看视频，快速了解插件使用方式~
+我们的插件支持 「设计模式」和「Dev模式」， 查看下面视频，快速了解插件使用方式~
 
 <video
     class="object-cover object-center"
@@ -93,13 +93,14 @@ Content-Type: multipart/form-data;
 **Body：**
 插件通过form-data的方式上传文件，下面的参数是插件提供的，同时，您可以通过自定义Body来传递额外的信息。
 
-| 参数名       | 类型     | 说明                                     |
-|-----------|--------|----------------------------------------|
-| file      | File   | 二进制文件                                  |
-| fileName  | String | 文件名,如image92.avif                      |
-| format    | String | 图片格式,如png                              |
-| figmaName | String | Figma用户名                               |
-| figmaId   | String | Figma用户ID ,19位的数字，参考[Figma User](https://www.figma.com/plugin-docs/api/User/)  |
+| 参数名       | 类型     | 说明                                                                            |
+|-----------|--------|-------------------------------------------------------------------------------|
+| file      | File   | 二进制文件                                                                         |
+| fileName  | String | 文件名,如image92.avif                                                             |
+| format    | String | 图片格式,如png                                                                     |
+| figmaName | String | Figma用户名，用户可以在Figma中修改，不是唯一的，但具有可读性。                                          |
+| figmaId   | String | Figma用户ID ,19位的数字，参考[Figma User](https://www.figma.com/plugin-docs/api/User/) |
+| xid       | String | 组合字段，格式为figmaName@figmaId                                                     |
 
 #### Response内容
 
@@ -254,10 +255,41 @@ function getClient(c: Context) {
 
 为了保护您图片的隐私性，上传行为是由前端发起，因此您可能需要处理跨域问题。
 
-## 如何保证服务不被滥用
+## 如何避免服务不被滥用
 
-`figmaId`是用户的唯一标识，它包含在上传的body当中，您可以通过白名单+password方式来限制用户上传的频率。
+一般情况下，您填入的上传服务接口是公网可访问的，如果接口泄露，这样可能会导致匿名访问甚至滥用。因此，我们建议您使用`xid`+`secret`白名单的方式来限制访问。
+
+**什么是xid?**
+
+`xid`是figmaId和figmaName的组合字段，格式为`figmaName@figmaId`。它包含在上传的body当中，您可以在接口中校验这个字段是否在白名单中。
+
+- figmaName，是Figma登录信息中用户的名字，用户可以在Figma中修改，不是唯一的，但具有可读性。
+- figmaId，19位的数字,是Figma登录信息中用户的唯一标识.
+
+具体可以参阅[[Figma User]](https://www.figma.com/plugin-docs/api/User/)
+
+`xid`难以被伪造，已经足够安全，但是如果您需要更高的安全性，我们建议您增加一个`secret`字段。
+
+**什么是secret?**
+
+`secret`是您自己设置的密码，您可以自己生成并颁发给用户，用户在使用插件时需要在Body中填入这个密码。
+
+<Callout icon="💡" type="info">
+    当然这只是一种建议，具体的安全策略需要根据您的实际情况来制定。
+</Callout>
 
 
+## 如何排查上传错误
 
+如果您在浏览器中使用Figma，可以在开发者工具中查看Network或Console面板，查看上传的请求和返回。
+
+如果您使用的Figma客户端，您可以按下面提示打开控制台获取错误信息。
+
+![](/images/guides/1.png)
+
+## 如何获取我的xid
+
+在插件首页，点击右上角的用户按钮，您可以看到您的xid。
+
+![](/images/guides/2.png)
 
