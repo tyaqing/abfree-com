@@ -30,6 +30,7 @@ export type SidebarNavItem = {
 
 export type SiteConfig = {
   name: string;
+  headline: string;
   description: string;
   url: string;
   links: {

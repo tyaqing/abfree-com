@@ -2,8 +2,9 @@ import type { SidebarNavItem, SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "ExportX",
+  headline: "All-in-one Figma Plugin for Image Compression & Upload",
   description:
-    "All-in-one Figma Plugin for Image Compression & Upload.",
+    "A local compression export tool based on WebAssembly supporting PNG, JPG, WEBP, SVG, AVIF Local compression | Quick and efficient | Privacy protection",
   url: "https://www.abfree.com",
   links: {
     twitter: "https://twitter.com/miickasmt",
