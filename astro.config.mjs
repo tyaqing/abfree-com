@@ -10,6 +10,7 @@ import {defineConfig} from "astro/config";
 import astroI18next from "astro-i18next";
 
 
+
 // https://astro.build/config
 export default defineConfig({
     site: "https://www.abfree.com",
@@ -36,7 +37,7 @@ export default defineConfig({
             },
         }),
     ],
-    output: "hybrid",
+    output: 'server',
     adapter: vercel({
         analytics: true,
     }),
