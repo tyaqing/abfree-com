@@ -29,13 +29,7 @@ export default defineConfig({
             applyBaseStyles: false,
         }),
         simpleStackForm(),
-        astroI18next({
-            defaultLocale: "en",
-            locales: ["en", "zh"],
-            i18nextServer: {
-                debug: true,
-            },
-        }),
+        astroI18next(),
     ],
     output: 'server',
     adapter: vercel({
