@@ -71,6 +71,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.24
         version: 18.2.24
+      '@vercel/analytics':
+        specifier: ^1.2.2
+        version: 1.2.2(react@18.2.0)
       astro:
         specifier: ^4.5.16
         version: 4.5.16

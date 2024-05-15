@@ -32,6 +32,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
+    "@vercel/analytics": "^1.2.2",
     "astro": "^4.5.16",
     "astro-i18next": "1.0.0-beta.21",
     "astro-icon": "^1.1.0",
