@@ -30,8 +30,8 @@ export default defineConfig({
         simpleStackForm(),
         astroI18next(),
     ],
-    output: "hybrid",
-    adapter: vercel({
-        analytics: true,
-    }),
+    output: "static",
+    // adapter: vercel({
+    //     analytics: true,
+    // }),
 });
