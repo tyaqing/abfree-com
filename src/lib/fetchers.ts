@@ -12,6 +12,7 @@ export async function getCategories() {
 
 export async function getPosts() {
   const posts = (await getCollection("blog"))
+    .filter((guide) => guide.data.published)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .filter(post=>{
       const lang = i18next.language === 'en' ? '' : i18next.language
