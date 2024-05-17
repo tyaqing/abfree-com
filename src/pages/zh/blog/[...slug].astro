@@ -12,7 +12,6 @@ export async function getStaticPaths() {
         .map((post) => {
         const [oLang, ...slug] = post.slug.split("/");
         const lang = i18next.language === "en" ? "" : i18next.language;
-        console.log("----------------------------------");
         return {
             params: {
                 // 去掉语言前缀
