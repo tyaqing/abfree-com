@@ -1,5 +1,5 @@
 ---
-import i18next, { changeLanguage } from "i18next";
+import { changeLanguage } from "i18next";
 import BlogPostLayout from "@/layouts/blog-post.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
@@ -7,15 +7,10 @@ changeLanguage("zh");
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog");
-    // console.log('posts??',posts)
     return posts
         .map((post) => {
-        const [oLang, ...slug] = post.slug.split("/");
-        const lang = i18next.language === "en" ? "" : i18next.language;
-        console.log("----------------------------------");
         return {
             params: {
-                // 去掉语言前缀
                 slug: post.slug
             },
             props: post
@@ -34,5 +29,5 @@ if (!slug || !post) {
 }
 ---
 <BlogPostLayout {...post}>
-	<Content />
+    <Content/>
 </BlogPostLayout>

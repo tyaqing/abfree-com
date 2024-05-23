@@ -38,19 +38,19 @@ const {pathname} = Astro.url;
 
 const i18nPath = (lang: string) => {
 
-    const backList = ['/blog','/guides']
-    const currentLang = i18next.language === 'en' ? '' : i18next.language
-    // 列表内的路由需要回到上一级目录
-    for (let i = 0; i < backList.length; i++) {
-        let path = backList[i]
-        if(currentLang){
-            path  ='/'+ currentLang+  backList[i]
-        }
-        if (pathname.startsWith(path)) {
-            return localizePath(backList[i], lang)
-        }
+  const backList = ['/blog', '/guides']
+  const currentLang = i18next.language === 'en' ? '' : i18next.language
+  // 列表内的路由需要回到上一级目录
+  for (let i = 0; i < backList.length; i++) {
+    let path = backList[i]
+    if (currentLang) {
+      path = '/' + currentLang + backList[i]
     }
-    return  localizePath(pathname, lang)
+    if (pathname.startsWith(path)) {
+      return localizePath(backList[i], lang)
+    }
+  }
+  return localizePath(pathname, lang)
 }
 ---
 
@@ -80,7 +80,7 @@ const i18nPath = (lang: string) => {
             </a>
             <a href={localizePath('/guides', i18next.language)}>
                 <Button variant="ghost">
-                    {t("MainNav.使用文档")}
+                  {t("MainNav.使用文档")}
                 </Button>
             </a>
 
@@ -101,12 +101,14 @@ const i18nPath = (lang: string) => {
         <div class="flex items-center gap-x-8 text-sm" slot="right-header">
             <div class="gap-4 flex">
                 <a
+                        hreflang="en"
                         class={cn('text-gray-500 hover:text-gray-900 transition-all', i18next.language === 'en' && 'font-bold underline')}
                         href={i18nPath('en')}
                 >
                     English
                 </a>
                 <a
+                        hreflang="zh"
                         href={i18nPath('zh')}
                         class={cn('text-gray-500 hover:text-gray-900 transition-all', i18next.language === 'zh' && 'font-bold underline')}
 

@@ -14,16 +14,10 @@ export async function getPosts() {
   const posts = (await getCollection("blog"))
     .filter((guide) => guide.data.published)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .filter(post=>{
-      const lang = i18next.language === 'en' ? '' : i18next.language
-      return post.slug.startsWith( i18next.language)
-    })
     .map((post) => {
       return {
         ...post,
-        // 去掉语言前缀
         slug:post.slug
-        // slug: post.slug.replace(i18next.language+'/', ''),
       }
     })
   return posts;
@@ -40,7 +34,6 @@ export async function getPostsByCategory(category: string) {
 export async function getGuides() {
   const guides = (await getCollection("guides"))
     .filter((guide) => guide.data.published)
-    .filter(post=>post.slug.startsWith(i18next.language))
     .map((guide) => {
       return {
         ...guide,
