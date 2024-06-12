@@ -1,19 +1,16 @@
 ---
-import { changeLanguage } from "i18next";
-import MainLayout from "@/layouts/main-layout.astro";
-import ToolsBox from "@/components/web/ToolsBox";
-
+import {changeLanguage} from "i18next";
+import FigmaPluginPage from "@/components/web/FigmaPluginPage";
+import '@/styles/globals.css'
 changeLanguage("en");
 ---
 
-  <section class="space-y-5">
-      <ToolsBox client:only="react"></ToolsBox>
-  </section>
+<section class="">
+    <FigmaPluginPage client:only="react"></FigmaPluginPage>
+</section>
 
-
-<style>
-    .lucide {
-        width: 1em;
-        height: 1em;
-    }
+<style is:global>
+::-webkit-scrollbar {
+    display: none;
+}
 </style>

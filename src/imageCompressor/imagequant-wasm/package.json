@@ -1,0 +1,17 @@
+{
+  "name": "imagequant-wasm",
+  "collaborators": [
+    "yakirteng <yakirteng@tencent.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "imagequant_wasm_bg.wasm",
+    "imagequant_wasm.js",
+    "imagequant_wasm.d.ts"
+  ],
+  "module": "imagequant_wasm.js",
+  "types": "imagequant_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

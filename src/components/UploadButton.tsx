@@ -173,7 +173,7 @@ export default function UploadButton() {
         // 获取上传的url
         const ulUrl = isCustom
           ? store.uploadConfig.imgHost
-          : `${import.meta.env.VITE_CF_WORKER}/upload`
+          : `${import.meta.env.PUBLIC_CF_WORKER}/upload`
 
         // 上传文件
         try {

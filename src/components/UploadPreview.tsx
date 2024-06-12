@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { useGlobalStore } from '@/stores/useGlobalStore'
 import { css, cx } from 'styled-system/css'
 import { center, vstack } from 'styled-system/patterns'
-import { FiMaximize } from 'react-icons/fi'
 import { Stack } from '../../styled-system/jsx'
+import {Maximize} from "lucide-react";
 
 export function UploadPreview() {
   const store = useGlobalStore()
@@ -26,7 +26,8 @@ export function UploadPreview() {
             position: 'relative',
             rounded: 'md',
             p: 2,
-            border: '1px solid',
+            borderWidth: '2px!',
+            borderColor: 'gray.200',
           }),
         )}
       >
@@ -71,7 +72,7 @@ export function UploadPreview() {
         {store.preview.length === 0 && (
           <div className={center({})}>
             <div className={vstack()}>
-              <FiMaximize className={'text-md'} />
+              <Maximize className={'text-md'} />
               <div className={'text-gray-900 font-bold text-sm'}>{t('请点击一个图层')}</div>
             </div>
           </div>

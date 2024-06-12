@@ -1,0 +1,19 @@
+---
+import { changeLanguage } from "i18next";
+import MainLayout from "@/layouts/main-layout.astro";
+import ToolsBox from "@/components/web/ToolsBox";
+
+changeLanguage("zh");
+---
+
+  <section class="space-y-5">
+      <ToolsBox client:only="react"></ToolsBox>
+  </section>
+
+
+<style>
+    .lucide {
+        width: 1em;
+        height: 1em;
+    }
+</style>

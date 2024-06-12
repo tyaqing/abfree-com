@@ -3,8 +3,9 @@ import { useTranslation } from 'react-i18next'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
 import { useGlobalStore } from '@/stores/useGlobalStore'
 import { css } from '../../styled-system/css'
-import { lazy, Suspense } from 'react'
-const UploadConfigForm = lazy(() => import('@/components/UploadConfigForm'))
+import { Suspense } from 'react'
+import UploadConfigForm from './UploadConfigForm'
+
 
 export default function UploadConfigSheet() {
   const store = useGlobalStore()

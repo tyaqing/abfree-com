@@ -16,8 +16,8 @@ import { EXPORT_RULE_NUM, FORMAT_LIST, SCALE_LIST } from '@/utils/const'
 import { hstack } from '../../styled-system/patterns'
 import { css } from '../../styled-system/css'
 import { HStack, VStack } from '../../styled-system/jsx'
-import { FiMinus, FiPlus } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next'
+import {Minus, Plus} from "lucide-react";
 
 export function ExportRules() {
   const store = useGlobalStore()
@@ -65,7 +65,7 @@ export function ExportRules() {
           size={'xs'}
           aria-label={'plus'}
         >
-          <FiPlus />
+          <Plus />
         </Button>
       </HStack>
       {/*规则列表*/}
@@ -120,7 +120,7 @@ export function ExportRules() {
               aria-label={'minus'}
               onClick={() => store.removeExportRule(rule.id)}
             >
-              <FiMinus />
+              <Minus />
             </Button>
           </HStack>
         ))}

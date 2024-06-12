@@ -1,0 +1,22 @@
+{
+  "name": "ExportX",
+  "id": "1301958586584763919",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "index-plugin.html",
+  "capabilities": [
+    "inspect"
+  ],
+  "enableProposedApi": false,
+  "editorType": [
+    "dev",
+    "figma"
+  ],
+  "permissions": [
+    "currentuser"
+  ],
+  "networkAccess": {
+    "allowedDomains": ["*"],
+    "reasoning": "My plugin needs to access user-defined cdn domain."
+  }
+}

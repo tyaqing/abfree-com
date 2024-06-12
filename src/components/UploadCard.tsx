@@ -1,24 +1,25 @@
-import {useRef, useState} from 'react'
-import {Button} from '@/components/ui/button'
-import {ExportRuleEntity, type IExportRuleEntity} from '@/domain/exportRule.entity'
-import {bytesToSize} from '@/utils/biz'
-import {toast} from '@/utils/message'
+import { useRef, useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { ExportRuleEntity, type IExportRuleEntity } from '@/domain/exportRule.entity'
+import { bytesToSize } from '@/utils/biz'
+import { toast } from '@/utils/message'
 
-import {Tag} from './custom/Tag'
-import {report} from '@/utils/report'
+import { css } from 'styled-system/css'
+import { Tag } from './custom/Tag'
+import { Center, HStack, Stack, VStack } from 'styled-system/jsx'
+import { report } from '@/utils/report'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip.tsx'
-import {LINK} from '@/utils/const.ts'
-import {tagColor} from '@/utils/style.ts'
-import {downloadSingle, getDownloadAllUrl} from '@/utils/zip.ts'
-import {ChevronDown, ChevronRight, Copy, Download, ExternalLink} from 'lucide-react'
-import {useCopyToClipboard} from 'react-use'
-import {ImageCard} from '@/components/ImageCard.tsx'
-import classNames from "classnames";
+import { LINK } from '@/utils/const.ts'
+import { tagColor } from '@/utils/style.ts'
+import { downloadSingle, getDownloadAllUrl } from '@/utils/zip.ts'
+import { ChevronDown, ChevronRight, Copy, Download, ExternalLink } from 'lucide-react'
+import { useCopyToClipboard } from 'react-use'
+import { ImageCard } from '@/components/ImageCard.tsx'
 
 // import { toast } from '@/utils/message.ts'
 
@@ -49,16 +50,27 @@ export default function UploadCard(props: IUploadCardProps) {
   }
   const allUploaded = props.data.tasks.length && props.data.tasks.every((item) => item.key)
   return (
-    <div
-
+    <VStack
+      alignItems={'stretch'}
+      bg={'white'}
+      p={2}
+      border={'1px'}
+      borderStyle={'solid'}
+      borderColor={'gray.200!'}
+      rounded={'sm'}
+      divideY={'1px'}
       ref={cardRef}
-      className={'flex flex-col items-stretch bg-white p-2 border border-gray-200 rounded-sm divide-y-1'}
+      className={'border'}
     >
       {/* 卡片头部 */}
-      <div  className={'flex gap-2 items-stretch'}>
+      <HStack gap={2} alignItems={'stretch'}>
         {/*缩略图*/}
-        <div
-          className={'border flex items-center justify-center rounded-sm w-[50px] h-[50px] overflow-hidden'}
+        <Center
+          overflow={'hidden'}
+          width={'50px'}
+          height={'50px'}
+          className={'border'}
+          rounded={'sm'}
         >
           <img
             className="p-1 object-cover
@@ -68,39 +80,52 @@ export default function UploadCard(props: IUploadCardProps) {
             src={base64}
             alt={''}
           />
-        </div>
-        <div className={'flex relative flex-1'} >
-          <div
-            className={'flex flex-col absolute left-0 top-0 right-0 bottom-0 justify-center items-stretch'}
+        </Center>
+        <Stack flex={1} pos={'relative'}>
+          <VStack
+            pos={'absolute'}
+            left={0}
+            top={0}
+            right={0}
+            bottom={0}
+            justifyContent={'center'}
+            alignItems={'stretch'}
           >
             {/*文件名*/}
-            <div  className={'flex gap-1'}>
+            <HStack gap={1}>
               {props.data?.errorMessage && (
                 <TooltipProvider delayDuration={300}>
                   <Tooltip>
                     <TooltipTrigger>
-                      <div
-                        className={'flex text-red-500 text-xs bg-red-100 gap-0.5 px-1.5 py-0 cursor-help rounded-md'}
+                      <HStack
+                        color={'red.500'}
+                        fontSize={'xs'}
+                        bg={'red.100'}
+                        gap={0.5}
+                        px={1.5}
+                        py={0}
+                        cursor={'help'}
+                        rounded="md"
                       >
                         {/*红点*/}
                         <div className={'w-2 h-2 rounded-full bg-red-500'}></div>
                         <div className={'font-bold'}>Err</div>
                         {/*<CircleAlert size={'16px'} className={'text-yellow-500 text-sm'} />*/}
-                      </div>
+                      </HStack>
                     </TooltipTrigger>
                     <TooltipContent alignOffset={50} side={'bottom'} align={'center'}>
                       <p className={'w-[210px] leading-5'}>
                         <span className={'text-yellow-500 font-bold'}>
                           {props.data.errorMessage}
                         </span>
-                        <br/>
-                        but you can download it locally <br/>
+                        <br />
+                        but you can download it locally <br />
                         <a
                           className={'flex underline items-center gap-1'}
                           target={'_blank'}
                           href={LINK.howToFix}
                         >
-                          how to fix it? <ExternalLink/>
+                          how to fix it? <ExternalLink />
                         </a>
                       </p>
                     </TooltipContent>
@@ -110,10 +135,10 @@ export default function UploadCard(props: IUploadCardProps) {
               <div className={'direction-reverse max-w-full truncate text-xs'}>
                 {props.data.name}
               </div>
-            </div>
+            </HStack>
 
             {!props.data?.tip ? (
-              <div className={'flex font-mono items-center gap-2 md:gap-3 text-xs'}>
+              <HStack className={'flex font-mono items-center gap-2 md:gap-3 text-xs'}>
                 {/*压缩后大小*/}
                 <div className={'font-bold'}>{bytesToSize(totalSize)}</div>
                 {/*原始大小*/}
@@ -122,7 +147,7 @@ export default function UploadCard(props: IUploadCardProps) {
                 </div>
                 {/*压缩率*/}
                 <Tag
-                  className={classNames({
+                  className={css({
                     bg: plusOrMinus >= 0 ? 'cyan.200' : 'red.200',
                     color: plusOrMinus >= 0 ? 'cyan.900!' : 'red.900',
                   })}
@@ -150,26 +175,25 @@ export default function UploadCard(props: IUploadCardProps) {
                     aria-label={'more'}
                     size={'xs'}
                   >
-                    {isOpen ? <ChevronDown/> : <ChevronRight/>}
+                    {isOpen ? <ChevronDown /> : <ChevronRight />}
                   </Button>
                 )}
-              </div>
+              </HStack>
             ) : (
               // tip信息
               <div className={'flex text-xs items-center gap-2 leading-[16px]'}>
                 <span className="relative flex h-3 w-3">
-                  <span
-                    className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
                 </span>
 
                 <div className={'text-gray-500 truncate'}>{props.data.tip}</div>
               </div>
             )}
-          </div>
-        </div>
+          </VStack>
+        </Stack>
 
-        <div className={'flex items-center justify-center'}>
+        <Center>
           {isSingle && singleTask.url ? (
             //  复制按钮
             <Button
@@ -182,7 +206,7 @@ export default function UploadCard(props: IUploadCardProps) {
                 onCopy(singleTask.url || '')
               }}
             >
-              <Copy/>
+              <Copy />
             </Button>
           ) : props.data.tasks.length > 1 ? (
             // 批量下载按钮
@@ -194,7 +218,7 @@ export default function UploadCard(props: IUploadCardProps) {
               className={'text-sm p-2'}
               size={'sm'}
             >
-              <Download/>
+              <Download />
             </Button>
           ) : (
             // 单个下载按钮
@@ -206,21 +230,24 @@ export default function UploadCard(props: IUploadCardProps) {
               className={'p-2 text-sm'}
               size={'sm'}
             >
-              <Download/>
+              <Download />
             </Button>
           )}
-        </div>
-      </div>
+        </Center>
+      </HStack>
       {/*卡片详情*/}
       {props.data.tasks.length > 1 && isOpen && (
-        <div
-          className={'transition-all duration-300 ease-in-out flex flex-col gap-1 items-stretch pt-2'}
+        <VStack
+          gap={1}
+          alignItems={'stretch'}
+          pt={2}
+          className={'transition-all duration-300 ease-in-out'}
         >
           {props.data.tasks.map((item) => (
-            <ImageCard data={item} key={item.id}/>
+            <ImageCard data={item} key={item.id} />
           ))}
-        </div>
+        </VStack>
       )}
-    </div>
+    </VStack>
   )
 }

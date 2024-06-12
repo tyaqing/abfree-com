@@ -17,7 +17,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Switch } from '@/components/ui/switch'
-import { UploadConfig, UploadType, useGlobalStore } from '@/stores/useGlobalStore'
+import {type UploadConfig, UploadType, useGlobalStore } from '@/stores/useGlobalStore'
 import { toast } from '@/utils/message'
 import { Tag } from '@/components/custom/Tag'
 import { HStack } from '../../styled-system/jsx'

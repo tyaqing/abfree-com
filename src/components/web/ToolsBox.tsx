@@ -20,7 +20,8 @@ import { ImageCompressor } from '@/imageCompressor/ImageCompressor.ts'
 import localforage from 'localforage'
 import { aegis } from '@/utils/aegis.ts'
 import '@preact/signals-react/auto'
-import '@/styles/index.css'
+import {VStack} from "styled-system/jsx";
+import {vstack} from "styled-system/patterns";
 
 export default function () {
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
@@ -129,7 +130,7 @@ export default function () {
       <div className={'w-[380px] mt-20 rounded-lg shadow-custom h-min  overflow-hidden'}>
         {/*顶部*/}
         <div className={'px-3 py-3 bg-black border-b text-white'}>
-          <div className={'text-sm inline-flex items-center gap-3 text-red-500'}>
+          <div className={'text-sm inline-flex items-center gap-3'}>
             <MessageSquareQuote />{' '}
             <span>
               <b>No File Size Limits</b>, Support PNG, JPG, SVG
