@@ -93,6 +93,11 @@
     @apply border-border;
   }
 
+  .lucide {
+    width: 1em;
+    height: 1em;
+  }
+
 
   /* If you want a custom scrollbar - By @diomed */
   /* * {
@@ -119,10 +124,7 @@
   } */
 
 
-  .lucide {
-    width: 1em;
-    height: 1em;
-  }
+
 
 
   html {
