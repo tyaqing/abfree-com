@@ -1,0 +1,27 @@
+---
+import { changeLanguage } from "i18next";
+import MainLayout from "@/layouts/main-layout.astro";
+import ToolsBox from "@/components/web/ToolsBox";
+
+changeLanguage("en");
+---
+
+<MainLayout title="About" description="Lorem ipsum dolor sit amet">
+  <section class="space-y-5">
+    <div
+      class="relative z-10 flex flex-col justify-center overflow-hidden lg:overflow-visible pb-16"
+    >
+      <div
+        class="mx-auto flex w-max -translate-x-[15%] justify-center lg:w-full lg:translate-x-0"
+      >
+        <div
+          class="relative z-10 mx-auto max-w-4xl px-4 md:max-w-6xl md:px-12 lg:max-w-5xl lg:px-6 xl:max-w-[80rem] xl:px-6 2xl:px-0"
+        >
+          <div class="grid grid-cols-4 items-center gap-4 md:gap-6">
+              <ToolsBox client:only="react"></ToolsBox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

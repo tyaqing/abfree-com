@@ -2,6 +2,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+
   darkMode: ["class"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -79,6 +80,13 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        custom: [
+          'rgb(15 15 15 / 5%) 0px 0px 0px 1px',
+          'rgb(15 15 15 / 10%) 0px 3px 6px',
+          'rgb(15 15 15 / 20%) 0px 9px 24px',
+        ],
       },
     },
   },

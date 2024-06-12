@@ -3,6 +3,6 @@ export default {
     defaultLocale: "en",
     locales: ["en", "zh"],
     i18nextServer: {
-        debug: process.env.NODE_ENV === "development",
+        // debug: process.env.NODE_ENV === "development",
     },
 }

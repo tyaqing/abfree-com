@@ -36,4 +36,9 @@ export default defineConfig({
             enabled:true
         }
     }),
+    vite:{
+        optimizeDeps:{
+            entries:['./src/pages/**/*.astro']
+        }
+    }
 });
