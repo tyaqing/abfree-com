@@ -19,9 +19,9 @@ export default function UploadHistory() {
     processingStore.clear()
   })
   return (
-    <VStack alignItems={'stretch'} pt={2} px={4} flex={1}>
+    <VStack alignItems={'stretch'} pt={2} flex={1} bg={''}>
       {/*标题区域*/}
-      <HStack alignItems={'center'} gap={2}>
+      <HStack alignItems={'center'} gap={2} px={4}>
         <div className={'text-xs font-bold'}>
           {t('历史记录')}
           {processingStore.processingList.length
@@ -56,7 +56,7 @@ export default function UploadHistory() {
           </Button>
         )}
       </HStack>
-      <VStack alignItems={'stretch'}>
+      <VStack  alignItems={'stretch'} className={' divide-y-[1px] gap-0'}>
         {processingStore.processingList.length === 0 && (
           <div className={'flex items-center justify-center min-h-[100px]'}>
             <HStack>

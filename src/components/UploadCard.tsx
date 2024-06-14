@@ -52,15 +52,13 @@ export default function UploadCard(props: IUploadCardProps) {
   return (
     <VStack
       alignItems={'stretch'}
-      bg={'white'}
-      p={2}
-      border={'1px'}
-      borderStyle={'solid'}
-      borderColor={'gray.200!'}
-      rounded={'sm'}
-      divideY={'1px'}
+      px={3}
+      py={2}
       ref={cardRef}
-      className={'border'}
+      transition={'all'}
+      _hover={{
+        bg:'gray.100'
+      }}
     >
       {/* 卡片头部 */}
       <HStack gap={2} alignItems={'stretch'}>

@@ -1,13 +1,14 @@
 {
   "title": "Figma Image Compressor",
   "Index": {
-    "h1": "All-in-one Figma Plugin for Image ",
+    "h1": "All-in-one Tools for Image ",
     "h1_append": "Compression & Upload",
     "h2": "A local compression export tool based on WebAssembly supporting PNG, JPG, WEBP, SVG, AVIF",
     "h3": "Local compression | Quick and efficient | Privacy protection",
     "Figma 插件": "Figma Plugin",
     "使用文档": "User Guide",
     "特性": "Features",
+    "预览": "Preview",
     "featureBefore": "This is a free Figma plugin designed to help you quickly compress and upload images for use on the web.",
     "featureAfter": "🚧 Image upload and compression optimization are under development. Stay tuned!",
     "feature1": "Local WebAssembly compression",

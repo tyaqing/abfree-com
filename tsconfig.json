@@ -4,6 +4,9 @@
     "strictNullChecks": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "typeRoots": [
+      "./node_modules/@figma"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],

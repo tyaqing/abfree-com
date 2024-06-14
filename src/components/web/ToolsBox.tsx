@@ -127,11 +127,11 @@ export default function () {
       {/*  src="https://cdn.abfree.com/public/s8ZsEELeH8ZrN4TB.svg"*/}
       {/*  alt=""*/}
       {/*/>*/}
-      <div className={'w-[380px] mt-20 rounded-lg shadow-custom h-min  overflow-hidden'}>
+      <div className={'w-[350px] rounded-lg shadow-custom h-min  overflow-hidden'}>
         {/*顶部*/}
         <div className={'px-3 py-3 bg-black border-b text-white'}>
           <div className={'text-sm inline-flex items-center gap-3'}>
-            <MessageSquareQuote />{' '}
+            <MessageSquareQuote />
             <span>
               <b>No File Size Limits</b>, Support PNG, JPG, SVG
             </span>
@@ -141,7 +141,7 @@ export default function () {
         {/*历史记录*/}
         <div
 
-          className={'items-stretch w-full gap-2 h-[280px] flex flex-col overflow-auto pt-3 pb-3 px-3'}
+          className={'items-stretch w-full h-[260px] flex flex-col overflow-auto divide-y'}
         >
           {processingList.value.map((file: IExportRuleEntity) => (
             <UploadCard data={file} key={file.id} />
@@ -151,12 +151,12 @@ export default function () {
             <div
               {...getRootProps({ className: 'dropzone' })}
               className={
-                'flex items-center justify-center h-full border border-dashed border-2 rounded-lg hover:border-gray-500 transition-all'
+                'flex m-3 items-center justify-center h-full border-dashed border-2 rounded-lg hover:border-gray-500 transition-all'
               }
             >
               <input {...getInputProps()} />
-              <div  className={'flex flex-col'}>
-                <ImagePlus className={'text-3xl'} />
+              <div  className={'flex items-center gap-2 flex-col'}>
+                <ImagePlus className={'text-4xl'} />
                 <div className={'text-sm'}>
                   Drag & Drop or{' '}
                   <a onClick={open} className={'text-blue-500 cursor-pointer'}>

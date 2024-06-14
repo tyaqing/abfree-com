@@ -113,27 +113,31 @@ export default function FigmaPluginPage() {
   }
   const defaultTheme = isChannelWoa() ? 'blue' : 'light'
   return (
-    <div
-      ref={scrollRef}
-      className={vstack({
-        position: 'relative',
-        bg: 'gray.50',
-        w: '100vw',
-        h: '100vh',
-        alignItems: 'stretch',
-        divideY: '1px',
-        overflow: 'scroll',
-        gap: 2,
-        pt: '44px',
-        pb: 2,
-      })}
-    >
+    <>
       <Header></Header>
-      <UploadPreview/>
-      <ExportRules/>
-      <UploadHistory/>
-      <CopywriterFooter/>
-      <UploadConfigSheet/>
-    </div>
+      <div
+        ref={scrollRef}
+        className={vstack({
+          position: 'relative',
+          bg: 'gray.50',
+          w: '100vw',
+          h: '100vh',
+          alignItems: 'stretch',
+          divideY: '1px',
+          overflow: 'scroll',
+          gap: 2,
+          pt: '44px',
+          pb: 2,
+        })}
+      >
+
+        <UploadPreview/>
+        <ExportRules/>
+        <UploadHistory/>
+        <CopywriterFooter/>
+        <UploadConfigSheet/>
+      </div>
+    </>
+
   )
 }

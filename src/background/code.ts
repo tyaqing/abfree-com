@@ -1,12 +1,12 @@
 import {
-  ExportDefault,
-  ExportOption,
+  type ExportDefault,
+  type ExportOption,
   Format,
   PluginMessageType,
-  UiMessage,
+  type UiMessage,
   UiMessageType,
 } from '@/types/interface'
-import { exportAsync, getData, getExportSetting, getPreview, setData, SVGSetting } from './utils'
+import {exportAsync, getData, getExportSetting, getPreview, setData, SVGSetting} from './utils'
 
 interface TmpExport {
   name: string
@@ -16,9 +16,10 @@ interface TmpExport {
 /**
  *  显示UI
  */
-figma.showUI(__html__, { themeColors: true, height: 660, width: 320 })
+figma.showUI(__html__, {themeColors: true, height: 660, width: 320})
 
-figma.on('run', () => {})
+figma.on('run', () => {
+})
 
 /**
  * 响应用户选择图层变化
@@ -35,13 +36,13 @@ figma.on('selectionchange', () => {
 })
 
 figma.ui.onmessage = async (msg: UiMessage) => {
-  const { type, data, messageId } = msg
+  const {type, data, messageId} = msg
   switch (type) {
     // 通过打开的登录UI PostMessage获取的用户信息
     case UiMessageType.SHOW_UI: {
-      const { data } = msg
+      const {data} = msg
       await setData('_ioa_user', data)
-      figma.showUI(__html__, { themeColors: true, height: 660, width: 320 })
+      figma.showUI(__html__, {themeColors: true, height: 660, width: 320})
       break
     }
     /** 通知 */
@@ -92,51 +93,48 @@ figma.ui.onmessage = async (msg: UiMessage) => {
       break
     }
     // 获取上传源文件
-    case UiMessageType.UPLOAD:
-      {
-        const { preview, scale, format }: ExportOption = data
-        let exportSetting: ExportSettings = SVGSetting
-        switch (format) {
-          case Format.PNG:
-            {
-              exportSetting = getExportSetting('PNG', scale)
-            }
-            break
-          case Format.JPG:
-            {
-              exportSetting = getExportSetting('JPG', scale)
-            }
-            break
+    case UiMessageType.UPLOAD: {
+      const {preview, scale, format}: ExportOption = data
+      let exportSetting: ExportSettings = SVGSetting
+      switch (format) {
+        case Format.PNG: {
+          exportSetting = getExportSetting('PNG', scale)
         }
-
-        const tmps: TmpExport[] = []
-        preview.map((pre) => {
-          const node = figma.currentPage.findOne((node) => node.id == pre.id)
-          if (node != null) {
-            const tmpNames = pre.name.split('/')
-            tmpNames[tmpNames.length - 1] = tmpNames[tmpNames.length - 1]
-            const tmpName = tmpNames.join('/')
-            tmps.push({
-              name: tmpName,
-              node: node,
-            })
-          }
-        })
-        const exports: ExportDefault[] = []
-        for (const tmp of tmps) {
-          const exportData = {
-            name: tmp.name,
-            format: format,
-            buffer: await exportAsync(tmp.node, exportSetting),
-          }
-          exports.push(exportData)
+          break
+        case Format.JPG: {
+          exportSetting = getExportSetting('JPG', scale)
         }
-        figma.ui.postMessage({
-          type: PluginMessageType.UPLOAD,
-          data: exports,
-          messageId,
-        })
+          break
       }
+
+      const tmps: TmpExport[] = []
+      preview.map((pre) => {
+        const node = figma.currentPage.findOne((node) => node.id == pre.id)
+        if (node != null) {
+          const tmpNames = pre.name.split('/')
+          tmpNames[tmpNames.length - 1] = tmpNames[tmpNames.length - 1]
+          const tmpName = tmpNames.join('/')
+          tmps.push({
+            name: tmpName,
+            node: node,
+          })
+        }
+      })
+      const exports: ExportDefault[] = []
+      for (const tmp of tmps) {
+        const exportData = {
+          name: tmp.name,
+          format: format,
+          buffer: await exportAsync(tmp.node, exportSetting),
+        }
+        exports.push(exportData)
+      }
+      figma.ui.postMessage({
+        type: PluginMessageType.UPLOAD,
+        data: exports,
+        messageId,
+      })
+    }
       break
   }
 }

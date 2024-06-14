@@ -1,11 +1,16 @@
 ---
 import { Image } from "astro:assets";
+import {t} from "i18next";
+import HeaderSection from "./header-section.astro";
 ---
 
 <div class="pb-6 sm:pb-16">
   <div class="container max-w-7xl">
+      <HeaderSection
+              title={t("Index.预览")}
+      />
     <div
-      class="rounded-xl md:bg-muted/30 md:p-3 md:ring-1 md:ring-inset md:ring-border"
+      class="mt-12 rounded-xl md:bg-muted/30 md:p-3 md:ring-1 md:ring-inset md:ring-border"
     >
       <div
         class="relative aspect-video overflow-hidden rounded-xl md:rounded-lg border"
